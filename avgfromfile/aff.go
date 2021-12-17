@@ -48,8 +48,14 @@ func getFloats(filename string)([]float64, error){
 //Create the main function which will get data and work out the average of the data
 func main(){
 
+    arg := os.Args[1:]
+    if len(arg) != 1 {
+        fmt.Println("Please enter the the name of the data file. Only 1 argument allowed")
+        return
+    }
+
     //Get the data from the file by passing file to getfloats function and error Check
-    numbers, err := getFloats("data")
+    numbers, err := getFloats(arg[0])
     if err != nil {
         log.Fatal(err)
     }
